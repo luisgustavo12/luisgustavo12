@@ -1,0 +1,40 @@
+secreto = 'palavra que será'
+digitadas = []
+chances = 5
+
+while True:
+    if chances <= 0:
+        print('Você PERDEU!')
+        break
+
+    letra = input('Digite uma letra: ')
+
+    if len(letra) > 1:
+        print('ATENÇÃO DEIGITE APENAS 1(UMA) LETRA!: ')
+        continue
+
+    digitadas.append(letra)
+
+    if letra in secreto:
+        print(f'Boa!!!, tem a letra "{letra}" na palvra!')
+    else:
+        print(f"PUT'S: a letra '{letra}' NÃO TEM ESSA LETRA NA PALAVRA!")
+        digitadas.pop()
+
+    secreto_temp = ''
+    for letra_secreta in secreto:
+        if letra_secreta in digitadas:
+            secreto_temp += letra_secreta
+        else:
+            secreto_temp += '*'
+
+    if secreto_temp == secreto:
+        print(f'PARABENS, VOCÊ GANHOU um {secreto}')
+        break
+    else:
+        print(f'A palvra secreta está assim: {secreto_temp}')
+
+    if letra not in secreto:
+        chances -= 1
+
+    print(f'você ainda {chances} tem chances')
